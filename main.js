@@ -70,5 +70,34 @@ const cardBuilder = pieArr => {
   //print them to the dom
   printToDom("pie-zone", domString);
 };
+const buttonClickEvent = (e) => {
+    const instructorName = e.target.id;
+    console.log(instructorName);
+    //should filter the pies based on the button that you clicked
+    const selectedPies = []
+    for (let i = 0; i < pies.length; i ++) {
+        const pie = pies[i]
+        if (pie.instructor === instructor) {
+            selectedPies.push(pie)
+        }
+    }
+
+    if (instructor === 'all') {
+        pieBuilder(pies);
+      } else {
+        pieBuilder(selectedPies);
+      }
+    // pass small list of pies back into the pie builder
+}
+
+    
+
+
+
+
+
+document.getElementById('zoe').addEventListener('click', buttonClickEvent); 
+document.getElementById('michael').addEventListener('click', buttonClickEvent);
+document.getElementById('callan').addEventListener('click', buttonClickEvent);
 
 cardBuilder(pies);
